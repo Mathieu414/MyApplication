@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Pair;
+import android.view.MenuItem;
 import android.view.View;
 
 import java.io.File;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListActivity extends AppCompatActivity implements View.OnClickListener {
+
+    MyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +38,11 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
             if (infos.length==2)
             filesList.add(Pair.create(infos[0],infos[1]));
         }
+        adapter = new MyAdapter(filesList);
 
         final RecyclerView rv = (RecyclerView) findViewById(R.id.list);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter(new MyAdapter(filesList));
+        rv.setAdapter(adapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
@@ -48,6 +52,21 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         Intent i = new Intent(this,MainActivity.class);
         startActivityForResult(i,0);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                adapter.notifyDataSetChanged();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
     @Override
