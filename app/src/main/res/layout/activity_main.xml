@@ -4,37 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fotolia"
     tools:context=".MainActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <Button
-            android:id="@+id/btnRecord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="120dp"
-            android:text="Start Recording" />
-        <Button
-            android:id="@+id/btnStop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:text="Stop Recording" />
-        <Button
-            android:id="@+id/btnPlay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:text="Play Recording" />
-        <Button
-            android:id="@+id/btnStopPlay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:text="Stop Playing" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnRecord"
+        android:layout_width="83dp"
+        android:layout_height="79dp"
+
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="356dp"
+        android:background="@android:drawable/ic_btn_speak_now"
+        android:backgroundTint="@color/couleurboutton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:hyphenationFrequency="full"
+        tools:shadowColor="@color/colorPrimary" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="83dp"
+        android:layout_height="79dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="356dp"
+        android:background="@android:drawable/ic_media_pause"
+        android:backgroundTint="@color/couleurboutton"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="248dp"
+        android:text="Play Recording"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnStopPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="132dp"
+        android:text="Stop Playing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
