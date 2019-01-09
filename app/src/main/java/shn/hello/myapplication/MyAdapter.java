@@ -9,23 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    private final List<Pair<String, String>> characters = Arrays.asList(
-            Pair.create("Lyra Belacqua", "Brave, curious, and crafty, she has been prophesied by the witches to help the balance of life"),
-            Pair.create("Pantalaimon", "Lyra's daemon, nicknamed Pan."),
-            Pair.create("Roger Parslow", "Lyra's friends"),
-            Pair.create("Lord Asriel", "Lyra's uncle"),
-            Pair.create("Marisa Coulter", "Intelligent and beautiful, but extremely ruthless and callous."),
-            Pair.create("Iorek Byrnison", "Armoured bear, Rightful king of the panserbjørne. Reduced to a slave of the human village Trollesund."),
-            Pair.create("Serafina Pekkala", "Witch who closely follows Lyra on her travels."),
-            Pair.create("Lee Scoresby", "Texan aeronaut who transports Lyra in his balloon. Good friend with Iorek Byrnison."),
-            Pair.create("Ma Costa", "Gyptian woman whose son, Billy Costa is abducted by the \"Gobblers\"."),
-            Pair.create("John Faa", "The King of all gyptian people.")
-    );
+    private List<Pair<String, String>> characters;
+
+    public MyAdapter(List<Pair<String, String>> c){
+        this.characters=c;
+    }
+
 
     @Override
     public int getItemCount() {

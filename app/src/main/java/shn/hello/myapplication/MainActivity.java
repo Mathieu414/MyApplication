@@ -53,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(CheckPermissions()) {
                     Date d = Calendar.getInstance().getTime();
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
                     String currentDateandTime = sdf.format(d);
                     mFileName = Environment.getExternalStorageDirectory()+File.separator+"Audiorecorder";
-                    mFileName += File.separator+currentDateandTime+".3gpp";
+                    mFileName += File.separator+"fileTest_"+currentDateandTime+".3gpp";
                     stopbtn.setEnabled(true);
                     startbtn.setEnabled(false);
                     playbtn.setEnabled(false);
