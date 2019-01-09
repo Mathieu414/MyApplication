@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //pour lier le java et le xml :
         startbtn = (Button)findViewById(R.id.btnRecord);
         stopbtn = (Button)findViewById(R.id.btnStop);
         playbtn = (Button)findViewById(R.id.btnPlay);
@@ -43,19 +44,19 @@ public class MainActivity extends AppCompatActivity {
         stopplay.setEnabled(false);
         File yourAppDir = new File(Environment.getExternalStorageDirectory()+File.separator+"Audiorecorder");
         if(!yourAppDir.exists()) {
-            // create empty directory
+            // create an empty directory
             yourAppDir.mkdirs();
         }
-        Date d = Calendar.getInstance().getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
-        String currentDateandTime = sdf.format(d);
-        mFileName = Environment.getExternalStorageDirectory()+File.separator+"Audiorecorder";
-        mFileName += currentDateandTime ;
 
         startbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(CheckPermissions()) {
+                    Date d = Calendar.getInstance().getTime();
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+                    String currentDateandTime = sdf.format(d);
+                    mFileName = Environment.getExternalStorageDirectory()+File.separator+"Audiorecorder";
+                    mFileName += File.separator+currentDateandTime+".3gpp";
                     stopbtn.setEnabled(true);
                     startbtn.setEnabled(false);
                     playbtn.setEnabled(false);
@@ -147,4 +148,5 @@ public class MainActivity extends AppCompatActivity {
     private void RequestPermissions() {
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{RECORD_AUDIO, WRITE_EXTERNAL_STORAGE}, REQUEST_AUDIO_PERMISSION_CODE);
     }
+
 }

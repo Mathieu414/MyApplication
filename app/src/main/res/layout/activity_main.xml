@@ -36,4 +36,5 @@
             android:text="Stop Playing" />
     </LinearLayout>
 
+
 </android.support.constraint.ConstraintLayout>
