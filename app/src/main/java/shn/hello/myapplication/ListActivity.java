@@ -1,6 +1,7 @@
 package shn.hello.myapplication;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -20,7 +21,8 @@ import java.util.List;
 
 public class ListActivity extends AppCompatActivity implements View.OnClickListener {
 
-    MyAdapter adapter;
+    private MyAdapter adapter;
+    private RecyclerView rv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,24 +31,28 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        List<Pair<String, String>> filesList = new ArrayList<Pair<String, String>>();
+        updateAdapter();
 
-        File path = new File(Environment.getExternalStorageDirectory()+File.separator+"Audiorecorder");
-        File list[] = path.listFiles();
-        for( int i=0; i< list.length; i++)
-        {
-            String[] infos = list[i].getName().split("_");
-            if (infos.length==2)
-            filesList.add(Pair.create(infos[0],infos[1]));
-        }
-        adapter = new MyAdapter(filesList);
-
-        final RecyclerView rv = (RecyclerView) findViewById(R.id.list);
+        rv = (RecyclerView) findViewById(R.id.list);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
+    }
+
+    public void updateAdapter(){
+        List<Pair<String, String>> filesList = new ArrayList<Pair<String, String>>();
+        File path = new File(Environment.getExternalStorageDirectory()+File.separator+"Audiorecorder");
+        File[] list = path.listFiles();
+        if (list!=null)
+            for( int i=0; i< list.length; i++)
+            {
+                String[] infos = list[i].getName().split("_");
+                if (infos.length==2)
+                    filesList.add(Pair.create(infos[0],infos[1]));
+            }
+        adapter = new MyAdapter(filesList);
     }
 
     @Override
@@ -66,6 +72,8 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_refresh:
+                updateAdapter();
+                rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 return true;
 
@@ -79,7 +87,9 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
-
+        updateAdapter();
+        rv.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
 
