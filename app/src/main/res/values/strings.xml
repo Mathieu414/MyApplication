@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="title_activity_list">ListActivity</string>
+    <string name="app_name">Enregistrement</string>
+    <string name="title_activity_list">Listes des mémos</string>
 </resources>

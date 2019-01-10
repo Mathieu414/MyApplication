@@ -1,57 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fotolia"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/fotolia">
 
-    <Button
+    <ImageButton
         android:id="@+id/btnRecord"
-        android:layout_width="83dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:padding="5dp"
+        android:src="@drawable/microphone"
+        android:background="@drawable/graybutton"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_margin="10dp"/>
 
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="356dp"
-        android:background="@android:drawable/ic_btn_speak_now"
-        android:backgroundTint="@color/couleurboutton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:hyphenationFrequency="full"
-        tools:shadowColor="@color/colorPrimary" />
-
-    <Button
-        android:id="@+id/btnStop"
-        android:layout_width="83dp"
-        android:layout_height="79dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="356dp"
-        android:background="@android:drawable/ic_media_pause"
-        android:backgroundTint="@color/couleurboutton"
-        android:elevation="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
+    <ImageButton
         android:id="@+id/btnPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="248dp"
-        android:text="Play Recording"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_above="@id/btnRecord"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/graybutton"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="15dp"
+        android:paddingLeft="25dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:src="@drawable/play"
+        android:visibility="invisible" />
 
-    <Button
-        android:id="@+id/btnStopPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="132dp"
-        android:text="Stop Playing"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <ImageButton
+        android:id="@+id/btnSave"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/btnRecord"
+        android:background="@drawable/graybutton"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:padding="15dp"
+        android:src="@drawable/checked"
+        android:visibility="invisible" />
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
